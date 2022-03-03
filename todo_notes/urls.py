@@ -21,11 +21,17 @@ from authors.views import AuthorModelViewSet
 from users.views import UserModelViewSet
 
 router=DefaultRouter()
-router.register('authors',UserModelViewSet)
+router.register('authors',AuthorModelViewSet)
+router.register('users',UserModelViewSet)
+
+
+# routerUser=DefaultRouter()
+# routerUser.register('users',UserModelViewSet)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/',include('rest_framework.urls')),
-    path('api/',include(router.urls))
+    path('api/',include(router.urls)),
+
 ]
