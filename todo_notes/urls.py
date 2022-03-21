@@ -25,9 +25,6 @@ router.register('authors',AuthorModelViewSet)
 router.register('users',UserModelViewSet)
 
 
-# routerUser=DefaultRouter()
-# routerUser.register('users',UserModelViewSet)
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
