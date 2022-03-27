@@ -1,2 +1,6 @@
 .idea/
+<<<<<<< 53accd03e20dded8f487f33ef4a38a364d83759a
 db.sqlite3
+=======
+todo_notes/frontend/node_modules/
+>>>>>>> gitingnor
