@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from authors.views import AuthorModelViewSet, BiographyModelViewSet,BookModelViewSet
+from todo.views import ProjectModelViewSet, TodoModelViewSet
 from users.views import UserModelViewSet
 
 router=DefaultRouter()
@@ -25,6 +26,8 @@ router.register('authors',AuthorModelViewSet)
 router.register('users',UserModelViewSet)
 router.register('biographyes',BiographyModelViewSet)
 router.register('books',BookModelViewSet)
+router.register('projects',ProjectModelViewSet)
+router.register('todo_notes',TodoModelViewSet)
 
 
 

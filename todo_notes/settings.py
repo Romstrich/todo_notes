@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'users',
     'rest_framework',
     'authors',
-    'corsheaders'
+    'corsheaders',
+    'todo'
 ]
 
 MIDDLEWARE = [
