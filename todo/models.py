@@ -12,7 +12,7 @@ class Project(models.Model):
         return f'{self.name}'
 
 class Todo(models.Model):
-    project=models.OneToOneField(Project,on_delete=models.CASCADE,unique=False)
+    project=models.ForeignKey(Project,on_delete=models.CASCADE,unique=False)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
     created_user=models.OneToOneField(User,on_delete=models.CASCADE,unique=False)
