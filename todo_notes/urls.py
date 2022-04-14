@@ -21,16 +21,16 @@ from rest_framework.routers import DefaultRouter
 
 from authors.views import AuthorModelViewSet, BiographyModelViewSet,BookModelViewSet
 from todo.views import ProjectModelViewSet, TodoModelViewSet
-from users.views import  UserListAPIView,UserRetrieveAPIView,UserUpdateAPIView #UserModelViewSet,
+from users.views import UserCustomViewSet #UserModelViewSet# UserViewSet   , UserListAPIView, UserRetrieveAPIView, UserUpdateAPIView,
 
 router=DefaultRouter()
 # router.register('authors',AuthorModelViewSet)
-#router.register('users',UserModelViewSet)
+router.register('users',UserCustomViewSet)
 # router.register('biographyes',BiographyModelViewSet)
 # router.register('books',BookModelViewSet)
 # router.register('projects',ProjectModelViewSet)
 # router.register('todo_notes',TodoModelViewSet)
-
+#router.register('user',UserViewSet,basename='user')
 
 
 
@@ -39,9 +39,9 @@ urlpatterns = [
     path('api-auth/',include('rest_framework.urls')),
     path('api/',include(router.urls)),
 
-    path('api/user/list/',UserListAPIView.as_view()),
-    path('api/user/detail/<int:pk>/',UserRetrieveAPIView.as_view()),
-    path('api/user/update/<int:pk>/', UserUpdateAPIView.as_view())
+    # path('api/user/list/',UserListAPIView.as_view()),
+    # path('api/user/detail/<int:pk>/',UserRetrieveAPIView.as_view()),
+    # path('api/user/update/<int:pk>/', UserUpdateAPIView.as_view())
 
 
 ]
