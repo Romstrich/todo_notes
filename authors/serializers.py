@@ -16,7 +16,7 @@ class BiographyModelSerializer(ModelSerializer):
 
 
 class BookModelSerializer(ModelSerializer):
-    authors=StringRelatedField(many=True)
+    #authors=StringRelatedField(many=True)
     class Meta:
         model = Book
         fields = '__all__'
