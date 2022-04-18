@@ -1,38 +1,44 @@
 import React from "react";
 
 
-const AuthorItem = ({author}) =>{
+const UsersItem = ({user}) =>{
 
     return(
     <tr>
         <td>
-            {author.first_name}
+            {user.username}
         </td>
         <td>
-            {author.last_name}
+            {user.first_name}
         </td>
         <td>
-            {author.birthdate}
+            {user.last_name}
+        </td>
+        <td>
+            {user.email}
         </td>
     </tr>
     )
 }
 
-const AuthorList = ({authors})=>{
+const UserList = ({users})=>{
     return(
     <table>
         <th>
-            First name
+            User name
+        </th>
+        <th>
+            First_name
         </th>
         <th>
             Last_name
         </th>
         <th>
-            Birthdate
+            E-mail
         </th>
-        {authors.map((author)=><AuthorItem author={author}/>)}
+        {users.map((user)=><UsersItem user={user}/>)}
     </table>
     )
 }
 
-export default AuthorList;
+export default UserList;
