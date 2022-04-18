@@ -3,27 +3,39 @@ import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 import UserList from "./components/Users.js"
+import ProjectList from "./components/Projects.js"
 
 class App extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            'users':[]
+            'users':[],
+            'projects':[]
         }
     }
 
     componentDidMount(){
 
-        axios.get("http://127.0.0.1:8000/api/users/").then(response=>{
+//        axios.get("http://127.0.0.1:8000/api/users/").then(response=>{
+//        this.setState(
+//            {'users':response.data}
+//        )}).catch(error => console.log(error))
+
+        axios.get("http://127.0.0.1:8000/api/projects/").then(response=>{
         this.setState(
-            {'users':response.data}
+            {'projects':response.data}
         )}).catch(error => console.log(error))
     }
 
     render(){
+//        return (
+//            <div>
+//                <UserList users={this.state.users}/>
+//            </div>
+//        );
         return (
             <div>
-                <UserList users={this.state.users}/>
+                <ProjectList projects={this.state.projects}/>
             </div>
         );
     }
