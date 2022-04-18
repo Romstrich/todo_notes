@@ -27,8 +27,8 @@ class TodoCustomViewSet(ListAPIView,CreateModelMixin,DestroyModelMixin,UpdateMod
     #renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     queryset = Todo.objects.all()
     serializer_class = TodoModelSerialiser
-    filterset_class=TodoFilter
-    pagination_class = TodoLimitPagination
+    # filterset_class=TodoFilter
+    # pagination_class = TodoLimitPagination
 
 
 class ProjectModelViewSet(ModelViewSet):
