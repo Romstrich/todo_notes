@@ -13,22 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from authors.views import AuthorModelViewSet, BiographyModelViewSet,BookModelViewSet
-from todo.views import ProjectModelViewSet, TodoModelViewSet
-from users.views import UserModelViewSet
+from todo.views import ProjectCustomViewSet, TodoCustomViewSet, ProjectModelViewSet
+from users.views import UserCustomViewSet #UserModelViewSet# UserViewSet   , UserListAPIView, UserRetrieveAPIView, UserUpdateAPIView,
 
 router=DefaultRouter()
-router.register('authors',AuthorModelViewSet)
-router.register('users',UserModelViewSet)
-router.register('biographyes',BiographyModelViewSet)
-router.register('books',BookModelViewSet)
-router.register('projects',ProjectModelViewSet)
-router.register('todo_notes',TodoModelViewSet)
-
+# router.register('authors',AuthorModelViewSet)
+router.register('users',UserCustomViewSet)
+# router.register('biographyes',BiographyModelViewSet)
+# router.register('books',BookModelViewSet)
+router.register('projects',ProjectCustomViewSet)
+#router.register('projects',ProjectModelViewSet)
+router.register('todo_notes',TodoCustomViewSet)
+#router.register('todo_by_project',TodoDjangoFilterViewSet)
+#router.register('user',UserViewSet,basename='user')
 
 
 
@@ -36,5 +40,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/',include('rest_framework.urls')),
     path('api/',include(router.urls)),
+
+    # path('api/user/list/',UserListAPIView.as_view()),
+    # path('api/user/detail/<int:pk>/',UserRetrieveAPIView.as_view()),
+    # path('api/user/update/<int:pk>/', UserUpdateAPIView.as_view())
+
 
 ]
