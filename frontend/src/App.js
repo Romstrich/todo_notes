@@ -5,6 +5,9 @@ import './App.css';
 import UserList from "./components/Users.js"
 import ProjectList from "./components/Projects.js"
 import TodoList from "./components/Todo_notes.js"
+import {HashRouter, Route, BrowserRouter,Link} from "react-router-dom"
+
+
 
 class App extends React.Component{
     constructor(props){
@@ -37,9 +40,26 @@ class App extends React.Component{
     render(){
     return (
             <div>
-                 <ProjectList projects={this.state.projects}/>
-                <TodoList todo_notes={this.state.todo_notes}/>
-                <UserList users={this.state.users}/>
+
+                <BrowserRouter>
+                       <nav>
+                            <ul>
+                                <li>
+                                    <Link to='/projects'> Projects </Link>
+                                </li>
+                                <li>
+                                    <Link to='/todo_notes'> Todo notes </Link>
+                                </li>
+                                <li>
+                                    <Link to='/users'> Users </Link>
+                                </li>
+                            </ul>
+                       </nav>
+
+                    <Route exact path='/projects' component={()=> <ProjectList projects={this.state.projects}/>}/>
+                    <Route exact path='/todo_notes' component={()=> <TodoList todo_notes={this.state.todo_notes}/>}/>
+                    <Route exact path='/users' component={()=> <UserList users={this.state.users}/>}/>
+                </BrowserRouter>
             </div>
         );
     }
