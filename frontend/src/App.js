@@ -37,20 +37,11 @@ class App extends React.Component{
     render(){
     return (
             <div>
+                 <ProjectList projects={this.state.projects}/>
                 <TodoList todo_notes={this.state.todo_notes}/>
+                <UserList users={this.state.users}/>
             </div>
         );
-    return (
-            <div>
-                <ProjectList projects={this.state.projects}/>
-            </div>
-        );
-//        return (
-//            <div>
-//                <UserList users={this.state.users}/>
-//            </div>
-//        );
-
     }
 }
 
