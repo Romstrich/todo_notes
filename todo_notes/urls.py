@@ -20,17 +20,17 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from authors.views import AuthorModelViewSet, BiographyModelViewSet,BookModelViewSet
-from todo.views import ProjectCustomViewSet, TodoCustomViewSet, ProjectModelViewSet
-from users.views import UserCustomViewSet #UserModelViewSet# UserViewSet   , UserListAPIView, UserRetrieveAPIView, UserUpdateAPIView,
+from todo.views import ProjectCustomViewSet, TodoModelViewSet, ProjectModelViewSet
+from users.views import UserCustomViewSet, UserModelViewSet# UserViewSet   , UserListAPIView, UserRetrieveAPIView, UserUpdateAPIView,
 
 router=DefaultRouter()
 # router.register('authors',AuthorModelViewSet)
-router.register('users',UserCustomViewSet)
+router.register('users',UserModelViewSet)
 # router.register('biographyes',BiographyModelViewSet)
 # router.register('books',BookModelViewSet)
-router.register('projects',ProjectCustomViewSet)
-#router.register('projects',ProjectModelViewSet)
-router.register('todo_notes',TodoCustomViewSet)
+# router.register('projects',ProjectCustomViewSet)
+router.register('projects',ProjectModelViewSet)
+router.register('todo_notes',TodoModelViewSet)
 #router.register('todo_by_project',TodoDjangoFilterViewSet)
 #router.register('user',UserViewSet,basename='user')
 

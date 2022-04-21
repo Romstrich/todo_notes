@@ -23,7 +23,7 @@ class ProjectCustomViewSet(ListAPIView,CreateModelMixin,DestroyModelMixin,Update
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerialiser
 
-class TodoCustomViewSet(ListAPIView,CreateModelMixin,DestroyModelMixin,UpdateModelMixin,GenericViewSet):
+class TodoModelViewSet(ModelViewSet):#ListAPIView,CreateModelMixin,DestroyModelMixin,UpdateModelMixin,GenericViewSet):
     #renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
     queryset = Todo.objects.all()
     serializer_class = TodoModelSerialiser
@@ -34,14 +34,14 @@ class TodoCustomViewSet(ListAPIView,CreateModelMixin,DestroyModelMixin,UpdateMod
 class ProjectModelViewSet(ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerialiser
-    pagination_class = ProjectLimitPagination
-
-    def get_queryset(self):
-        name=self.request.query_params.get('name','')
-        projects=Project.objects.all()
-        if name:
-            projects=projects.filter(name__contains=name)
-        return projects
+    # pagination_class = ProjectLimitPagination
+    #
+    # def get_queryset(self):
+    #     name=self.request.query_params.get('name','')
+    #     projects=Project.objects.all()
+    #     if name:
+    #         projects=projects.filter(name__contains=name)
+    #     return projects
 
 # class TodoDjangoFilterViewSet(ModelViewSet):
 #     queryset = Todo.objects.all()

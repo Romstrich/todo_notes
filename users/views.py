@@ -11,9 +11,9 @@ from .models import User
 from .serializers import UserModelSerializer
 
 
-# class UserModelViewSet(ModelViewSet):
-#     queryset = User.objects.all()
-#     serializer_class = UserModelSerializer
+class UserModelViewSet(ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserModelSerializer
 
 # Отобразить список user
 # class UserListAPIView(ListAPIView):
