@@ -33,13 +33,14 @@ router.register('projects',ProjectModelViewSet)
 router.register('todo_notes',TodoModelViewSet)
 #router.register('todo_by_project',TodoDjangoFilterViewSet)
 #router.register('user',UserViewSet,basename='user')
-
+from rest_framework.authtoken import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/',include('rest_framework.urls')),
     path('api/',include(router.urls)),
+    path('api-token-auth/',views.obtain_auth_token),
 
     # path('api/user/list/',UserListAPIView.as_view()),
     # path('api/user/detail/<int:pk>/',UserRetrieveAPIView.as_view()),
