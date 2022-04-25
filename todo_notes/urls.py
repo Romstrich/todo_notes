@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from authors.views import AuthorModelViewSet, BiographyModelViewSet,BookModelViewSet
 from todo.views import ProjectCustomViewSet, TodoModelViewSet, ProjectModelViewSet
@@ -41,6 +42,8 @@ urlpatterns = [
     path('api-auth/',include('rest_framework.urls')),
     path('api/',include(router.urls)),
     path('api-token-auth/',views.obtain_auth_token),
+    path('api/token',TokenObtainPairView.as_view(),name='token_obtain_pair'),
+    path('api/token/refresh',TokenRefreshView.as_view(),name='token_refresh')
 
     # path('api/user/list/',UserListAPIView.as_view()),
     # path('api/user/detail/<int:pk>/',UserRetrieveAPIView.as_view()),
