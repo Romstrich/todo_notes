@@ -6,7 +6,7 @@ import UserList from "./components/Users.js"
 import ProjectList from "./components/Projects.js"
 import TodoList from "./components/Todo_notes.js"
 import LoginForm from "./components/Auth.js"
-import {HashRouter, Route, BrowserRouter,Link} from "react-router-dom"
+import {HashRouter, Route, BrowserRouter,Link, Switch,Redirect} from "react-router-dom"
 
 
 
@@ -19,6 +19,11 @@ class App extends React.Component{
             'todo_notes':[]
         }
     }
+
+    get_token(username,password){
+    console.log(username,password);
+    }
+
 
     componentDidMount(){
 
@@ -57,9 +62,13 @@ class App extends React.Component{
                             </ul>
                        </nav>
 
+            <Switch>
                     <Route exact path='/projects' component={()=> <ProjectList projects={this.state.projects}/>}/>
                     <Route exact path='/todo_notes' component={()=> <TodoList todo_notes={this.state.todo_notes}/>}/>
                     <Route exact path='/users' component={()=> <UserList users={this.state.users}/>}/>
+
+                    <Route exact path='/login' component={()=> <LoginForm get_token={(username,password)=>this.get_token(username,password)}/>}/>
+            </Switch>
                 </BrowserRouter>
             </div>
         );
