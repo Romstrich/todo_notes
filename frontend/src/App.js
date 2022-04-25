@@ -22,17 +22,18 @@ class App extends React.Component{
     }
 
     load_data(){
-    axios.get("http://127.0.0.1:8000/api/users/").then(response=>{
+    const headers=this.get_headers()
+    axios.get("http://127.0.0.1:8000/api/users/",{headers}).then(response=>{
         this.setState(
             {'users':response.data}
         )}).catch(error => console.log(error))
 
-        axios.get("http://127.0.0.1:8000/api/projects/").then(response=>{
+        axios.get("http://127.0.0.1:8000/api/projects/",{headers}).then(response=>{
         this.setState(
             {'projects':response.data}
         )}).catch(error => console.log(error))
 
-        axios.get("http://127.0.0.1:8000/api/todo_notes/").then(response=>{
+        axios.get("http://127.0.0.1:8000/api/todo_notes/",{headers}).then(response=>{
         this.setState(
             {'todo_notes':response.data}
         )}).catch(error => console.log(error))
