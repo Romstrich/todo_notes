@@ -9,7 +9,7 @@ from rest_framework.viewsets import ModelViewSet, ViewSet, GenericViewSet
 from rest_framework.generics import ListAPIView
 
 from .models import User
-from .serializers import UserModelSerializer
+from .serializers import UserModelSerializer, UserModelSerializerV2
 
 
 class UserModelViewSet(ModelViewSet):
@@ -18,6 +18,11 @@ class UserModelViewSet(ModelViewSet):
 
 class UserListAPIView(ListAPIView):
     queryset = User.objects.all()
+
+    def get_serializer_class(self):
+        if self.request.version == 'v2':
+            return UserModelSerializerV2
+        return UserModelSerializer
 
 # Отобразить список user
 # class UserListAPIView(ListAPIView):
