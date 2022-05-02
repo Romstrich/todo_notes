@@ -27,7 +27,7 @@ from users.views import  UserModelViewSet, \
 
 router=DefaultRouter()
 # router.register('authors',AuthorModelViewSet)
-router.register('users',UserModelViewSet)
+#router.register('users',UserModelViewSet)
 # router.register('biographyes',BiographyModelViewSet)
 # router.register('books',BookModelViewSet)
 # router.register('projects',ProjectCustomViewSet)
@@ -46,7 +46,11 @@ urlpatterns = [
     path('api/token',TokenObtainPairView.as_view(),name='token_obtain_pair'),
     path('api/token/refresh',TokenRefreshView.as_view(),name='token_refresh'),
 
-    path('api/<str:version>/users/',UserListAPIView.as_view()),
+    path('api/users/v1/',include('users.urls',namespace='v1')),
+    path('api/users/v2/',include('users.urls',namespace='v2')),
+
+
+    #path('api/<str:version>/users/',UserListAPIView.as_view()),
     # path('api/user/list/',UserListAPIView.as_view()),
     # path('api/user/detail/<int:pk>/',UserRetrieveAPIView.as_view()),
     # path('api/user/update/<int:pk>/', UserUpdateAPIView.as_view())
