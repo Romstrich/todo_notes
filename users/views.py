@@ -6,6 +6,7 @@ from rest_framework.mixins import ListModelMixin, UpdateModelMixin
 from rest_framework.renderers import JSONRenderer, BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet, ViewSet, GenericViewSet
+from rest_framework.generics import ListAPIView
 
 from .models import User
 from .serializers import UserModelSerializer
@@ -14,6 +15,9 @@ from .serializers import UserModelSerializer
 class UserModelViewSet(ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserModelSerializer
+
+class UserListAPIView(ListAPIView):
+    queryset = User.objects.all()
 
 # Отобразить список user
 # class UserListAPIView(ListAPIView):
@@ -54,7 +58,7 @@ class UserModelViewSet(ModelViewSet):
 #     queryset = User.objects.all()
 #     serializer_class = UserModelSerializer
 
-class UserCustomViewSet(ListModelMixin,UpdateModelMixin,RetrieveAPIView,GenericViewSet):
-    renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
-    queryset = User.objects.all()
-    serializer_class = UserModelSerializer
+# class UserCustomViewSet(ListModelMixin,UpdateModelMixin,RetrieveAPIView,GenericViewSet):
+#     renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
+#     queryset = User.objects.all()
+#     serializer_class = UserModelSerializer
