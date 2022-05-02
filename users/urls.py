@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import UserListAPIView,UserModelViewSet
+from .views import UserModelViewSet,#UserListAPIView
 
 app_name='users'
 
 urlpatterns = [
-    path('',UserListAPIView.as_view())
+    #path('',UserListAPIView.as_view())
 ]
