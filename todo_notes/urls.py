@@ -36,7 +36,21 @@ router.register('todo_notes',TodoModelViewSet)
 #router.register('todo_by_project',TodoDjangoFilterViewSet)
 #router.register('user',UserViewSet,basename='user')
 from rest_framework.authtoken import views
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
 
+
+schema_view=get_schema_view(
+    openapi.Info(
+        title='Todo_notes',
+        default_version='v2',
+        description='Todo & projects of users',
+        contact=openapi.Contact(name='My name',email='my@e.mail'),
+
+    ),
+    public=True,
+
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -49,6 +63,7 @@ urlpatterns = [
     # path('api/users/v1/',include('users.urls',namespace='v1')),
     # path('api/users/v2/',include('users.urls',namespace='v2')),
 
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
 
     #path('api/<str:version>/users/',UserListAPIView.as_view()),
     # path('api/user/list/',UserListAPIView.as_view()),
