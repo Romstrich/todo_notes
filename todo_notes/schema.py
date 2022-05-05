@@ -22,9 +22,13 @@ class ProjectType(DjangoObjectType):
 class Query(ObjectType):
 
     all_todo=List(TodoType)
+    all_project=List(ProjectType)
 
     def resolve_all_todo(root,info):
         return Todo.objects.all()
+
+    def resolve_all_project(root,info):
+        return Project.objects.all()
 
 
 schema = Schema(query=Query)
