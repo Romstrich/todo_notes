@@ -1,5 +1,5 @@
 # import graphene
-from graphene import ObjectType, Schema, String, List
+from graphene import ObjectType, Schema, String, List, Field, Int
 from graphene_django import DjangoObjectType
 from todo.models import Todo, Project
 from users.models import User
@@ -30,6 +30,8 @@ class Query(ObjectType):
     all_project=List(ProjectType)
     all_users=List(UserType)
 
+    todo_by_id=Field(TodoType,id=Int(required=True))
+
     def resolve_all_todo(root,info):
         return Todo.objects.all()
 
@@ -38,5 +40,11 @@ class Query(ObjectType):
 
     def resolve_all_users(root,info):
         return User.objects.all()
+
+    def resolve_todo_by_id(root,info,id=None):
+        try:
+            return Todo.objects.get(id=id)
+        except Todo.DoesNotExist:
+            return None
 
 schema = Schema(query=Query)
