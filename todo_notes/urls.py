@@ -13,28 +13,64 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+
 from django.contrib import admin
 from django.urls import path, include
+from graphene_django.views import GraphQLView
 from rest_framework.routers import DefaultRouter
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from authors.views import AuthorModelViewSet, BiographyModelViewSet,BookModelViewSet
-from todo.views import ProjectModelViewSet, TodoModelViewSet
-from users.views import UserModelViewSet
+from todo.views import ProjectCustomViewSet, TodoModelViewSet, ProjectModelViewSet
+from users.views import  UserModelViewSet
+    #UserListAPIView  # UserViewSet   , UserListAPIView, UserRetrieveAPIView, UserUpdateAPIView,
 
 router=DefaultRouter()
-router.register('authors',AuthorModelViewSet)
+# router.register('authors',AuthorModelViewSet)
 router.register('users',UserModelViewSet)
-router.register('biographyes',BiographyModelViewSet)
-router.register('books',BookModelViewSet)
+# router.register('biographyes',BiographyModelViewSet)
+# router.register('books',BookModelViewSet)
+# router.register('projects',ProjectCustomViewSet)
 router.register('projects',ProjectModelViewSet)
 router.register('todo_notes',TodoModelViewSet)
+#router.register('todo_by_project',TodoDjangoFilterViewSet)
+#router.register('user',UserViewSet,basename='user')
+from rest_framework.authtoken import views
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
 
 
+schema_view=get_schema_view(
+    openapi.Info(
+        title='Todo_notes',
+        default_version='v2',
+        description='Todo & projects of users',
+        contact=openapi.Contact(name='My name',email='my@e.mail'),
 
+    ),
+    public=True,
+
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/',include('rest_framework.urls')),
     path('api/',include(router.urls)),
+    path('api-token-auth/',views.obtain_auth_token),
+    path('api/token',TokenObtainPairView.as_view(),name='token_obtain_pair'),
+    path('api/token/refresh',TokenRefreshView.as_view(),name='token_refresh'),
+
+    # path('api/users/v1/',include('users.urls',namespace='v1')),
+    # path('api/users/v2/',include('users.urls',namespace='v2')),
+
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0),name='schema-swagger-ui'),
+
+    #path('api/<str:version>/users/',UserListAPIView.as_view()),
+    # path('api/user/list/',UserListAPIView.as_view()),
+    # path('api/user/detail/<int:pk>/',UserRetrieveAPIView.as_view()),
+    # path('api/user/update/<int:pk>/', UserUpdateAPIView.as_view())
+
+    path('graphql/',GraphQLView.as_view(graphiql=True)),
 
 ]
