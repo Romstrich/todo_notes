@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'rest_framework_simplejwt.token_blacklist',
-    'drf_yasg'
+    'drf_yasg',
+    'graphene_django'
 ]
 
 MIDDLEWARE = [
@@ -166,3 +167,7 @@ REST_FRAMEWORK = {
     # 'DEFAULT_VERSIONING_CLASS':'rest_framework.versioning.NamespaceVersioning',
     'DEFAULT_VERSIONING_CLASS':'rest_framework.versioning.QueryParameterVersioning',
 }
+
+GRAPHENE = {
+        'SCHEMA':'todo_notes.schema.schema',
+            }

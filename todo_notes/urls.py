@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from graphene_django.views import GraphQLView
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
@@ -70,5 +71,6 @@ urlpatterns = [
     # path('api/user/detail/<int:pk>/',UserRetrieveAPIView.as_view()),
     # path('api/user/update/<int:pk>/', UserUpdateAPIView.as_view())
 
+    path('graphql/',GraphQLView.as_view(graphiql=True)),
 
 ]
