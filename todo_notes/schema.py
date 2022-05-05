@@ -47,4 +47,6 @@ class Query(ObjectType):
         except Todo.DoesNotExist:
             return None
 
+    
+
 schema = Schema(query=Query)
