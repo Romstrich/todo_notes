@@ -25,6 +25,10 @@ class App extends React.Component{
     }
 
     deleteProject(id){
+        const headers=this.get_headers()
+        axios.get('http://127.0.0.1:8000/api/projects/1/',{headers}).then(response=>{
+        alert(`http://127.0.0.1:8000/api/projects/${id}/`)
+        }).catch(error => console.log(error))
         console.log(id)
     }
 
