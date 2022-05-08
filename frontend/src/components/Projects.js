@@ -11,8 +11,13 @@ const ProjectItem = ({project}) =>{
         <td>
             {project.users}
         </td>
-
+        <td>
+            <button type="button">
+                Удалить
+            </button>
+        </td>
     </tr>
+
     )
 }
 
@@ -27,6 +32,11 @@ const ProjectList = ({projects})=>{
         </th>
 
         {projects.map((project)=><ProjectItem project={project}/>)}
+        <tr>
+            <button type="button">
+                Создать
+            </button>
+        </tr>
     </table>
     )
 }
