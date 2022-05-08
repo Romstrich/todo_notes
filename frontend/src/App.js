@@ -26,9 +26,10 @@ class App extends React.Component{
 
     deleteProject(id){
         const headers=this.get_headers()
-        axios.get('http://127.0.0.1:8000/api/projects/1/',{headers}).then(response=>{
-        alert(`http://127.0.0.1:8000/api/projects/${id}/`)
+        axios.delete(`http://127.0.0.1:8000/api/projects/${id}/`,{headers}).then(response=>{
+        this.load_data()
         }).catch(error => console.log(error))
+        alert(`http://127.0.0.1:8000/api/projects/${id}/`)
         console.log(id)
     }
 
@@ -69,7 +70,7 @@ class App extends React.Component{
     }
 
     is_auth(){
-        return !!this.state.token
+        return this.state.token
     }
 
     get_headers(){
