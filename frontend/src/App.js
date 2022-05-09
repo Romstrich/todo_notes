@@ -6,8 +6,11 @@ import UserList from "./components/Users.js";
 import ProjectList from "./components/Projects.js";
 import TodoList from "./components/Todo_notes.js";
 import LoginForm from "./components/Auth.js";
+import ProjectForm from "./components/ProjectForm.js";
 import {HashRouter, Route, BrowserRouter,Link, Switch,Redirect} from "react-router-dom";
 import Cookies from "universal-cookie";
+//import { Link } from 'react-router';
+
 
 
 class App extends React.Component{
@@ -123,6 +126,7 @@ class App extends React.Component{
 
             <Switch>
                     <Route exact path='/projects' component={()=> <ProjectList projects={this.state.projects} deleteProject={(id)=>this.deleteProject(id)}/>}/>
+                    // <Route exact path='/projects/create' component={()=> <ProjectForm/>}/>
                     <Route exact path='/todo_notes' component={()=> <TodoList todo_notes={this.state.todo_notes}/>}/>
                     <Route exact path='/users' component={()=> <UserList users={this.state.users}/>}/>
 

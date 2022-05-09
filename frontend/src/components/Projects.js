@@ -1,5 +1,5 @@
 import React from "react";
-
+import {HashRouter, Route, BrowserRouter,Link, Switch,Redirect} from "react-router-dom";
 
 const ProjectItem = ({project,deleteProject}) =>{
 
@@ -33,9 +33,9 @@ const ProjectList = ({projects,deleteProject})=>{
 
         {projects.map((project)=><ProjectItem project={project} deleteProject={deleteProject}/>)}
         <tr>
-            <button type="button">
-                Создать
-            </button>
+
+                <Link to="/projects/create/">Создать</Link>
+
         </tr>
     </table>
     )
