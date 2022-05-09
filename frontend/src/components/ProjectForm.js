@@ -20,7 +20,8 @@ class ProjectForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state.name,this.state.users)
+        //console.log(this.state.name,this.state.users)
+        this.props.createProject(this.state.name,this.state.users)
         event.preventDefault()
     }
 
