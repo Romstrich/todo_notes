@@ -25,6 +25,7 @@ class App extends React.Component{
     }
 
     createProject(name,users){
+    console.log(name,users)
     }
 
     deleteProject(id){
@@ -126,7 +127,10 @@ class App extends React.Component{
 
             <Switch>
                     <Route exact path='/projects' component={()=> <ProjectList projects={this.state.projects} deleteProject={(id)=>this.deleteProject(id)}/>}/>
-                    <Route exact path='/projects/create' component={()=> <ProjectForm/>}/>
+
+                    <Route exact path='/projects/create' component={()=> <ProjectForm
+                    createProject={(name,users)=>this.createProject(name,users)}/>}/>
+
                     <Route exact path='/todo_notes' component={()=> <TodoList todo_notes={this.state.todo_notes}/>}/>
                     <Route exact path='/users' component={()=> <UserList users={this.state.users}/>}/>
 
